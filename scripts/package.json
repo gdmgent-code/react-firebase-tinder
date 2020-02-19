@@ -1,0 +1,23 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "Automation Scripts",
+  "main": "index.js",
+  "author": "Philippe De Pauw - Waterschoot",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "firebase": "^7.8.2",
+    "firebase-admin": "^8.9.2",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/runtime": "^7.8.4",
+    "babel-preset-airbnb": "^4.4.0"
+  },
+  "scripts": {
+    "seeder": "babel-node seeder.js --debug --presets airbnb"
+  }
+}
