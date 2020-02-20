@@ -1,7 +1,7 @@
-import SigninScreen from './SigninScreen';
+import SignInScreen from './SignInScreen';
 import SignupScreen from './SignupScreen';
 
 export {
-  SigninScreen,
+  SignInScreen,
   SignupScreen,
 }

@@ -1,12 +1,12 @@
 import React, { Fragment, useState } from 'react';
 
 
-const AppLayout = ({children}) => {
+const FrontofficeLayout = ({children}) => {
 
   return (
     <Fragment>
-      APP LAYOUT 
+      FrontofficeLayout
     </Fragment>
   )
 };
-export default AppLayout;
+export default FrontofficeLayout;

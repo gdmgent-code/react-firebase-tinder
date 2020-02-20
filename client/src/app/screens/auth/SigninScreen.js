@@ -4,7 +4,9 @@ import { Redirect } from 'react-router-dom';
 import { useAuth } from '../../services';
 import * as Routes from '../../routes';
 
-const SigninScreen = () => {
+import { SignInForm } from '../../components';
+
+const SignInScreen = () => {
 
   /*const { currentUser } = useAuth();
 
@@ -14,9 +16,9 @@ const SigninScreen = () => {
 
   return (
     <Fragment>
-      Signin
+      <SignInForm />
     </Fragment>
   );
 };
 
-export default SigninScreen;
+export default SignInScreen;

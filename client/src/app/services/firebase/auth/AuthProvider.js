@@ -37,7 +37,7 @@ export const AuthProvider = (props) => {
   }
 
   return (
-    <AuthContext.Provider value={{ currentUser, logout }}>
+    <AuthContext.Provider value={{ currentUser, loginUserWithEmailAndPassword, logout }}>
       {props.children}
     </AuthContext.Provider>
   )

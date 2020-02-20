@@ -1,10 +1,10 @@
 import HomeScreen from './HomeScreen';
 import { AppScreen } from './app';
-import { SigninScreen, SignupScreen } from './auth';
+import { SignInScreen, SignupScreen } from './auth';
 
 export {
   AppScreen,
   HomeScreen,
-  SigninScreen,
+  SignInScreen,
   SignupScreen,
 }

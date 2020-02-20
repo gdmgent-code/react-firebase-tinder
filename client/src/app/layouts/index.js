@@ -1,7 +1,7 @@
 import BaseLayout from './BaseLayout';
-import AppLayout from './AppLayout';
+import FrontofficeLayout from './FrontofficeLayout';
 
 export {
-  AppLayout,
+  FrontofficeLayout,
   BaseLayout,  
 }
