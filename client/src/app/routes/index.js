@@ -3,6 +3,7 @@ export const HOME = '/home';
 export const APP = '/app';
 export const APP_DASHBOARD = '/app/dashboard';
 export const APP_CHATS = '/app/chats';
+export const APP_PROFILE = '/app/profile';
 export const APP_SETTINGS = '/app/settings';
 
 export const AUTH_SIGNUP = '/auth/signup';
