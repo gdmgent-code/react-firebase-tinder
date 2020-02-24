@@ -5,6 +5,13 @@ import 'firebase/firestore';
 import { FirestoreContext } from './FirestoreContext';
 
 export const FirestoreProvider = (props) => {
+  const [currentUsersPage, setCurrentUsersPage] = useState(1);
+  const [usersPerPage, setCurrentUsersPerPage] = useState(10);
+
+  const getUsers = () => {
+
+  }
+
   const addUser = () => {
 
   }
@@ -17,11 +24,11 @@ export const FirestoreProvider = (props) => {
 
   }
 
-  const likeUser = () => {
+  const likeUser = (userId, friendsId) => {
 
   }
 
-  const dislikeUser = () => {
+  const dislikeUser = (userId, friendsId) => {
 
   }
 

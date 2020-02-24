@@ -7,9 +7,10 @@ const SignInForm = ({}) => {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
 
-  const handleSubmit = (ev) => {
+  const handleSubmit = async (ev) => {
     ev.preventDefault();
-    //loginUserWithEmailAndPassword(email, password);
+    const obj = await loginUserWithEmailAndPassword(email, password);
+    console.log(obj);
   }
 
   return (

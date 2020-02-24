@@ -5,11 +5,12 @@ import 'firebase/auth';
 import { AuthContext } from './AuthContext';
 
 export const AuthProvider = (props) => {
-  const [currentUser, setCurrentUser] = useState(firebase.auth().currentUser);
+  const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('tinder:authUser')));
 
   useEffect(() => {
     // Listen for auth changes
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      localStorage.setItem('tinder:authUser', JSON.stringify(user));
       setCurrentUser(user);
     });
     // Unsubscribe to the listener when unmounting
