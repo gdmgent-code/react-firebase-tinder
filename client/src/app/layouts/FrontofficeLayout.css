@@ -1,7 +1,7 @@
 :root {
   --color-white: rgba(255, 255, 255, 1);
   --color-grey-light: rgba(242, 242, 242, 1);
-  --color-grey: rgba(172, 172, 172, 1);
+  --color-grey: rgba(226, 226, 226, 1);
   --color-blue: rgba(0, 165, 217, 1);
   --spacer: 12px;
 }
@@ -15,4 +15,18 @@ html, body {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+}
+
+.content {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.content__sidebar {
+  background: var(--color-grey-light);
+  border-right: 2px solid var(--color-grey);
+  width: 420px;
 }

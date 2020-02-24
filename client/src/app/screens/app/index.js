@@ -1,9 +1,11 @@
 import AppScreen from './AppScreen';
-import ChatScreen from './ChatScreen';
+import ChatsScreen from './ChatsScreen';
+import ChatDetailsScreen from './ChatDetailsScreen';
 import DashboardScreen from './DashboardScreen';
 
 export {
   AppScreen,
-  ChatScreen,
+  ChatsScreen,
+  ChatDetailsScreen,
   DashboardScreen,
 }

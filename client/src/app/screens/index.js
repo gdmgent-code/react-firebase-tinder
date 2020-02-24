@@ -1,10 +1,11 @@
 import HomeScreen from './HomeScreen';
-import { AppScreen, ChatScreen } from './app';
+import { AppScreen, ChatsScreen, ChatDetailsScreen } from './app';
 import { SignInScreen, SignupScreen } from './auth';
 
 export {
   AppScreen,
-  ChatScreen,
+  ChatsScreen,
+  ChatDetailsScreen,
   HomeScreen,
   SignInScreen,
   SignupScreen,

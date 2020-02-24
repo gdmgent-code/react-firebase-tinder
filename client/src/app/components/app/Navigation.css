@@ -8,7 +8,7 @@
   flex-wrap: nowrap;
   align-items: center;
 
-  border-right: 2px solid var(--color-grey-light);
+  border-right: 2px solid var(--color-grey);
   box-sizing: border-box;
   padding: var(--spacer) 0;
 }
