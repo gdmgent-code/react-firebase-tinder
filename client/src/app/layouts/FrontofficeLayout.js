@@ -1,12 +1,17 @@
 import React, { Fragment, useState } from 'react';
+import { Navigation } from '../components';
 
+import './FrontofficeLayout.css';
 
 const FrontofficeLayout = ({children}) => {
 
   return (
-    <Fragment>
-      FrontofficeLayout
-    </Fragment>
+    <div className="layout">
+      <Navigation />
+      <main className="main">
+        {children}
+      </main>
+    </div>
   )
 };
 export default FrontofficeLayout;

@@ -8,7 +8,7 @@ import * as Routes from './routes';
 import { AuthRouteWithLayout, RouteWithLayout } from './utilities';
 
 import { FrontofficeLayout, BaseLayout } from './layouts';
-import { AppScreen, HomeScreen, SignupScreen, SignInScreen } from './screens';
+import { AppScreen, ChatScreen, HomeScreen, SignupScreen, SignInScreen } from './screens';
 
 import './App.scss';
 
@@ -17,13 +17,13 @@ const App = () => {
     <div className="app">
       <FirebaseProvider>
         <AuthProvider>
-          <Router>  
+          <Router>
             <Switch>
               <RouteWithLayout exact path={ Routes.LANDING } layout={ BaseLayout } component={ HomeScreen }/>
               <Redirect from={ Routes.HOME } to="/"/>
               <RouteWithLayout exact path={ Routes.AUTH_SIGNIN } layout={ BaseLayout } component={ SignInScreen }/>
               <RouteWithLayout exact path={ Routes.AUTH_SIGNUP } layout={ BaseLayout } component={ SignupScreen }/>
-              <AuthRouteWithLayout exact path={ Routes.APP } layout={ FrontofficeLayout } component={ AppScreen }/>
+              <AuthRouteWithLayout path={ Routes.APP } layout={ FrontofficeLayout } component={ AppScreen }/>
             </Switch>
           </Router>
         </AuthProvider>

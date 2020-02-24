@@ -1,0 +1,46 @@
+.navigation {
+  background: var(--color-white);
+  height: 100vh;
+  width: 86px;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  border-right: 2px solid var(--color-grey-light);
+  box-sizing: border-box;
+  padding: var(--spacer) 0;
+}
+
+.navigation > ul {
+  margin: 0;
+  padding: 0;
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+
+  list-style: none;
+}
+
+.navigation > ul > li {
+  margin: var(--spacer) 0;
+}
+
+.navigation > ul > li:first-of-type,
+.navigation > ul > li:nth-of-type(4) {
+  flex-grow: 1;
+}
+
+.navigation > ul > li > a {
+  color: var(--color-grey);
+  text-decoration: none;
+}
+
+.navigation > ul > li > a:hover,
+.navigation > ul > li > a.selected {
+  color: var(--color-blue);
+}
