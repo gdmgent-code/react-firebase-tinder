@@ -11,6 +11,7 @@
   border-right: 2px solid var(--color-grey);
   box-sizing: border-box;
   padding: var(--spacer) 0;
+  position: fixed;
 }
 
 .navigation > ul {

@@ -2,6 +2,7 @@
   --color-white: rgba(255, 255, 255, 1);
   --color-grey-light: rgba(242, 242, 242, 1);
   --color-grey: rgba(226, 226, 226, 1);
+  --color-grey-dark: rgba(112, 112, 112, 1);
   --color-blue: rgba(0, 165, 217, 1);
   --spacer: 12px;
 }
@@ -15,6 +16,12 @@ html, body {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+}
+
+.main {
+  margin-left: 86px;
+  width: calc(100vw - 86px);
+  height: 100vh;
 }
 
 .content {

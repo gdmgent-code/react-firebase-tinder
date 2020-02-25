@@ -1,11 +1,19 @@
 import React, { Fragment } from 'react';
 
-const ChatScreen = () => {
+import {
+  useParams
+} from "react-router-dom";
+
+const ChatDetailsScreen = () => {
+  let { id } = useParams();
+
   return (
     <Fragment>
-      CHAT
+      <p>
+        CHAT
+      </p>
     </Fragment>
   );
 };
 
-export default ChatScreen;
+export default ChatDetailsScreen;

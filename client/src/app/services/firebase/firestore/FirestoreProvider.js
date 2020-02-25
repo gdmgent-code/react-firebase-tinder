@@ -9,16 +9,26 @@ export const FirestoreProvider = (props) => {
   const [usersPerPage, setCurrentUsersPerPage] = useState(10);
 
   const getUsers = async (startAt, itemsPerPage) => {
-    const query = firestore.collection('users').startAt(startAt).limit(itemsPerPage);
+    const db = firebase.firestore();
+    const query = db.collection('users').limit(itemsPerPage);
     const snapshot = await query.get();
-    const items = snapshot.docs.map((doc) => {
-      return doc.data();
+    const users = snapshot.docs.map((doc) => {
+      return {uid: doc.id, ...doc.data()};
     });
-    return items;
+    return users;
   }
 
-  const addUser = () => {
+  const addUser = async () => {
+    const db = firebase.firestore();
+    db.settings({
+      timestampsInSnapshots: true
+    });
+    const userRef = await db.collection('users').add({
+      fullname: this.state.fullname,
+      email: this.state.email
+    }); 
 
+    return userRef;
   }
 
   const updateUser = () => {
@@ -29,16 +39,51 @@ export const FirestoreProvider = (props) => {
 
   }
 
-  const likeUser = (userId, friendsId) => {
-
+  const likeUser = async (userId, friendId) => {
+    return matchUser(userId, friendId, 1);
   }
 
-  const dislikeUser = (userId, friendsId) => {
+  const superlikeUser = async (userId, friendId) => {
+    return matchUser(userId, friendId, 2);
+  }
 
+  const dislikeUser = async (userId, friendId) => {
+    return matchUser(userId, friendId, -1);
+  }
+
+  const neutralUser = async (userId, friendId) => {
+    return matchUser(userId, friendId, 0);
+  }
+
+  const reNeutralUser = async (matchId) => {
+    const db = firebase.firestore();
+    db.settings({
+      timestampsInSnapshots: true
+    });
+    const matchRef = await db.collection('matches').doc(matchId);
+    const setWithMerge = await matchRef.set({
+      status: 0
+    }, { merge: true });
+
+    return setWithMerge;
+  }
+
+  const matchUser = async (userId, friendId, status = 0) => {
+    const db = firebase.firestore();
+    db.settings({
+      timestampsInSnapshots: true
+    });
+    const matchRef = await db.collection('matches').add({
+      userId: userId,
+      friendId: friendId,
+      status: status
+    }); 
+
+    return matchRef;
   }
 
   return (
-    <FirestoreContext.Provider value={{ getUsers }}>
+    <FirestoreContext.Provider value={{ dislikeUser, getUsers, likeUser, neutralUser, reNeutralUser, superlikeUser }}>
       {props.children}
     </FirestoreContext.Provider>
   )

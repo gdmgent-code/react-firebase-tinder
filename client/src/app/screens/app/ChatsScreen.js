@@ -14,7 +14,7 @@ const ChatsScreen = ({match}) => {
         <Route exact path={match.url} render={() => (
           <h3>Please select a chat:</h3>
         )}/>
-        <Route path="/app/chats/:chatId" component={ ChatDetailsScreen }/>
+        <Route path="/app/chats/:id" component={ ChatDetailsScreen }/>
       </div>      
     </div>
   );

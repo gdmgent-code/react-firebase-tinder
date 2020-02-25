@@ -1,0 +1,57 @@
+.card {
+  background: var(--color-white);
+  border: 1px solid var(--color-grey);
+  border-radius: calc(var(--spacer) / 2);
+}
+
+.card__header {
+  box-sizing: border-box;
+  padding: calc(var(--spacer));
+}
+
+.card__title {
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+
+  font-weight: 700;
+}
+
+.card__sub-title {
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0;
+
+  font-weight: 500;
+  color: var(--color-grey-dark);
+}
+
+.card__picture {
+  display: block;
+  height: 216px;
+  width: 100%;
+
+  overflow: hidden;
+  border-top-left-radius: calc(var(--spacer) / 2);
+  border-top-right-radius: calc(var(--spacer) / 2);
+}
+
+.card__picture > img {
+  height: 100%;
+  width: 100%;
+
+  object-fit: cover;
+}
+
+.tinder-user {
+
+}
+
+.tinder-user__picture {
+
+}
+
+.tinder-user__name {
+  margin: 0;
+  padding: 0;
+}
