@@ -20,12 +20,10 @@ export const FirestoreProvider = (props) => {
 
   const addUser = async () => {
     const db = firebase.firestore();
-    db.settings({
-      timestampsInSnapshots: true
-    });
     const userRef = await db.collection('users').add({
       fullname: this.state.fullname,
-      email: this.state.email
+      email: this.state.email,
+      ...generateTimestampsDuringCreate(),
     }); 
 
     return userRef;
@@ -57,12 +55,10 @@ export const FirestoreProvider = (props) => {
 
   const reNeutralUser = async (matchId) => {
     const db = firebase.firestore();
-    db.settings({
-      timestampsInSnapshots: true
-    });
     const matchRef = await db.collection('matches').doc(matchId);
     const setWithMerge = await matchRef.set({
-      status: 0
+      status: 0,
+      _updatedAt: Date.now()
     }, { merge: true });
 
     return setWithMerge;
@@ -70,16 +66,22 @@ export const FirestoreProvider = (props) => {
 
   const matchUser = async (userId, friendId, status = 0) => {
     const db = firebase.firestore();
-    db.settings({
-      timestampsInSnapshots: true
-    });
     const matchRef = await db.collection('matches').add({
       userId: userId,
       friendId: friendId,
-      status: status
+      status: status,
+      ...generateTimestampsDuringCreate(),
     }); 
 
     return matchRef;
+  }
+
+  const generateTimestampsDuringCreate = () => {
+    return {
+      _createdAt: Date.now(),
+      _updatedAt: null,
+      _deletedAt: null
+    }
   }
 
   return (
