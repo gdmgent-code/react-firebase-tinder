@@ -43,7 +43,9 @@ const TinderCardList = ({}) => {
         result = await dislikeUser(userId, friendId);
         break;
     }
-    console.log(result);
+    if (result) {
+      
+    }
   }
 
   const handleBoostClick = async (ev) => {
