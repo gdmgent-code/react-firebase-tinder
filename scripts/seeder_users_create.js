@@ -1,16 +1,5 @@
 import fetch from 'node-fetch';
-import * as admin from 'firebase-admin';
-
-const serviceAccount = require("./key.json");
-const app = admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://pgm-website-ahs.firebaseio.com"
-});
-
-/*
-* Firestore database
-*/
-const db = app.firestore();
+import { admin, app, db, generateTimestampsDuringCreate } from './firebase';
 
 /*
 * Get random users from the RandomUserMe service API
@@ -34,27 +23,6 @@ const createUserWithEmailAndPassword = async (email, password) => {
     password
   });
 }
-
-/*
-* Delete all users from firebase
-*/
-const deleteAllUsers = async (nextPageToken) => {
-  admin.auth().listUsers(100, nextPageToken)
-    .then(async (listUsersResult) => {
-      listUsersResult.users.forEach(async (userRecord, index) => {
-        const userJson = userRecord.toJSON();
-        const uid = userJson.uid;
-        const promise = await admin.auth().deleteUser(uid);
-      });
-      if (listUsersResult.pageToken) {
-        deleteAllUsers(listUsersResult.pageToken);
-      }
-    })
-    .catch((error) => {
-      console.log('Error listing users:', error);
-    });
-}
-
 
 /*
 * Create a user in firestore
@@ -86,6 +54,7 @@ const createUser = async (userId, randomUser) => {
     cell: randomUser.cell,
     profilePicture: randomUser.picture.large,
     userId: userId,
+    ...generateTimestampsDuringCreate
   }
 
   const usersRef = db.collection("users");
@@ -95,14 +64,12 @@ const createUser = async (userId, randomUser) => {
 (async () => {
  
   try {
-    await deleteAllUsers();
     const randomUsers = await getRandomUsers(50);
     randomUsers.forEach(async (randomUser) => {
       const userRecord = await createUserWithEmailAndPassword(randomUser.email, 'gdmgent007');
       const userJson = userRecord.toJSON();
       createUser(userJson.uid, randomUser);
     });
-
   } catch (err) {
     console.log(err);
   }
