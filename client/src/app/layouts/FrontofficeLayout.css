@@ -36,4 +36,6 @@ html, body {
   background: var(--color-grey-light);
   border-right: 2px solid var(--color-grey);
   width: 420px;
+
+  padding: var(--spacer);
 }

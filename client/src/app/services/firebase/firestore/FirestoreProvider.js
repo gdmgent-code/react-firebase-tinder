@@ -18,6 +18,37 @@ export const FirestoreProvider = (props) => {
     return users;
   }
 
+  const getUser = async (userId) => {
+    const db = firebase.firestore();
+    console.log(userId);
+    const docRef = await db.collection('users').doc(userId);
+    const doc = await docRef.get();
+
+    if(!doc.exists) {
+      return null;
+    }
+    return {uid: doc.id, ...doc.data()};
+  }
+
+  const getMatchesOfUser = async (userId, status, startAt, itemsPerPage) => {
+    const db = firebase.firestore();
+    const query = db.collection('matches').where('userId', '==', userId).where('status', '==', status);
+    const snapshot = await query.get();
+    const matches = snapshot.docs.map((doc) => {
+      return {uid: doc.id, ...doc.data()};
+    });
+    return matches;
+  }
+
+  const getMatchedUsersOfUser = async (userId, status, startAt, itemsPerPage) => {
+    const matches = await getMatchesOfUser(userId, status, startAt, itemsPerPage);
+    const friends = await Promise.all(matches.map(async (match) => {
+      const user = await getUser(match.friendId);
+      return {status: match.status, ...user};
+    }));
+    return friends;
+  }
+
   const addUser = async () => {
     const db = firebase.firestore();
     const userRef = await db.collection('users').add({
@@ -85,7 +116,7 @@ export const FirestoreProvider = (props) => {
   }
 
   return (
-    <FirestoreContext.Provider value={{ dislikeUser, getUsers, likeUser, neutralUser, reNeutralUser, superlikeUser }}>
+    <FirestoreContext.Provider value={{ dislikeUser, getUsers, likeUser, neutralUser, reNeutralUser, superlikeUser, getMatchedUsersOfUser }}>
       {props.children}
     </FirestoreContext.Provider>
   )
