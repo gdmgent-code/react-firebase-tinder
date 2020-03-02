@@ -9,7 +9,8 @@
     "dotenv": "^8.2.0",
     "firebase": "^7.8.2",
     "firebase-admin": "^8.9.2",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "uuid": "^7.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -19,6 +20,8 @@
   },
   "scripts": {
     "seeder:auth:delete": "babel-node seeder_auth_delete.js --debug --presets airbnb",
+    "seeder:chats:create": "babel-node seeder_chats_create.js --debug --presets airbnb",
+    "seeder:chats:delete": "babel-node seeder_collection_delete.js chats 50 --debug --presets airbnb",
     "seeder:matches:create": "babel-node seeder_matches_create.js --debug --presets airbnb",
     "seeder:matches:delete": "babel-node seeder_collection_delete.js matches 50 --debug --presets airbnb",
     "seeder:users:create": "babel-node seeder_users_create.js --debug --presets airbnb",
